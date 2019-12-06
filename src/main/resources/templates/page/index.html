@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>系统首页</title>
+    <link rel="stylesheet" th:href="@{../../lib/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{../../lib/font/css/font-awesome.min.css}"/>
+    <link rel="stylesheet" th:href="@{../../css/speedKill.css}"/>
+    <link rel="stylesheet" th:href="@{../../css/public.css}"/>
+
+    <style>
+        body{text-align: center}
+        #divcss1{margin:0 auto;width:300px;height:100px}
+        #divcss2{margin:0 auto;width:300px;height:100px}
+        #divcss3{margin:0 auto;width:300px;height:100px}
+    </style>
+</head>
+<body>
+
+
+
+<div id="app">
+    <!-- header -->
+    <div th:replace="public/header :: header"></div>
+
+    <!-- main -->
+    <br id="main">
+        <div id="divcss1" style="width: 400px; height: 30px" >
+                <a th:href="'/student' + '/list'" target="_blank">
+                    <button style="width:100%" class="btn btn-success">学生信息管理</button>
+                </a>
+        </div ><br/>
+        <div id="divcss2" style="width: 400px; height: 30px">
+            <a th:href="'/college/department/list'" target="_blank">
+                <button style="width:100%" class="btn btn-success">院系信息管理</button>
+            </a>
+        </div>
+        <br/>
+        <div id="divcss3" style="width: 400px; height: 30px">
+            <a th:href="'/club' + '/list'" target="_blank">
+                <button style="width:100%" class="btn btn-success">社团信息管理</button>
+            </a>
+        </div>
+
+        <!-- footer -->
+        <div th:replace="public/footer :: footer"></div>
+
+    </div>
+</div>
+</body>
+<script type="text/javascript" th:src="@{../../lib/jquery-3.3.1.min.js}"></script>
+<script type="text/javascript" th:src="@{../../lib/bootstrap.min.js}"></script>
+</html>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxh.student_management.mapper.CollegeMapper">
+    <select id="findAllDepartments" resultType="com.zxh.student_management.Do.DepartmentDO">
+        select * from departments;
+    </select>
+
+    <select id="findAllMajorsByDepartmentId" resultType="com.zxh.student_management.Do.MajorDO">
+        select * from majors where departmentId = #{departmentId};
+    </select>
+
+    <select id="findClassByDepartmentIdAndMajorId" resultType="com.zxh.student_management.Do.ClassDO">
+        select * from classes where departmentId = #{departmentId} and majorId = #{majorId};
+    </select>
+
+    <insert id="insertDepartment" parameterType="com.zxh.student_management.Do.DepartmentDO">
+        insert into departments(departmentName, departmentPlace, departmentNumber) values (#{departmentName}, #{departmentPlace}, #{departmentNumber});
+    </insert>
+    <insert id="insertMajor" parameterType="com.zxh.student_management.Do.MajorDO">
+        insert into majors(majorName, departmentId) values (#{majorName}, #{departmentId});
+    </insert>
+
+    <insert id="insertClass" parameterType="com.zxh.student_management.Do.ClassDO">
+        insert into classes(classId, majorId, yearOfClass, departmentId, classNumber)
+        values (#{classId}, #{majorId}, #{yearOfClass}, #{departmentId}, #{classNumber});
+    </insert>
+
+    <select id="checkNum" statementType="CALLABLE" resultType="com.zxh.student_management.Do.CheckDepartmentNumDO">
+        {call checkDepartmentNumber()}
+    </select>
+
+    <select id="updateClass" resultType="Integer">
+        select updateClass(#{classId}, #{newId});
+    </select>
+
+    <select id="findMajorById" resultType="com.zxh.student_management.Do.MajorDO">
+        select * from majors where majorId = #{majorId};
+    </select>
+
+    <select id="findDepartmentById" resultType="com.zxh.student_management.Do.DepartmentDO">
+        select * from departments where departmentId = #{departmentId};
+    </select>
+
+    <select id="findMajorByName" resultType="com.zxh.student_management.Do.MajorDO">
+        select * from majors where majorName = #{name};
+    </select>
+
+    <select id="findDepartmentByName" resultType="com.zxh.student_management.Do.DepartmentDO">
+        select * from departments where departmentName = #{name};
+    </select>
+
+    <delete id="deleteMajorById">
+        delete from majors where majorId = #{majorId};
+    </delete>
+
+    <delete id="deleteDepartmentById" >
+        delete from departments where departmentId = #{departmentId};
+    </delete>
+
+    <update id="updateMajor">
+        update majors set majorName = #{majorName}, departmentId = #{departmentId} where majorId = #{majorId};
+    </update>
+
+    <update id="updateDepartment">
+        update departments set
+            departmentName = #{departmentName},
+            departmentPlace = #{departmentPlace}
+            where departmentId = #{departmentId};
+    </update>
+    <select id="findAllClass" resultType="com.zxh.student_management.Do.ClassDO">
+        select * from classes;
+    </select>
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxh.student_management.mapper.StudentMapper">
+    <insert id="insertStudent" parameterType="com.zxh.student_management.Do.StudentDO">
+        insert into students values (
+            #{studentId},
+            #{name},
+            #{age},
+            #{sex},
+            #{majorId},
+            #{departmentId},
+            #{classId},
+            #{dormitory}
+            );
+    </insert>
+
+    <delete id="deleteStudentByID">
+        delete from students where studentId = #{studentId};
+    </delete>
+
+    <update id="updateStudent" parameterType="com.zxh.student_management.Do.StudentDO">
+        update studentManagement.students set
+            name = #{name},
+            age = #{age},
+            sex = #{sex},
+            majorId = #{majorId},
+            departmentId = #{departmentId},
+            classId = #{classId},
+            dormitory = #{dormitory}
+            where studentId = #{studentId};
+    </update>
+
+    <select id="findAll" resultType="com.zxh.student_management.Do.StudentDO">
+        select * from students;
+    </select>
+
+    <select id="getStudentById" resultType="com.zxh.student_management.Do.StudentDO">
+        select * from students where studentId = #{studentId};
+    </select>
+</mapper>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:c="http://www.w3.org/1999/XSL/Transform">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{../../lib/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{../../assets/metronic/css/style.css}"/>
+</head>
+<body>
+<form method="POST" action="/student/update"
+      enctype="multipart/form-data">
+
+
+    <div class="form-group">
+        <label for="firstname1" class="col-sm-1 control-label">学生ID</label>
+        <div class="col-sm-6">
+            <input type="text" name="studentId" readonly th:value="${student.studentId}" class="form-control" id="firstname1" >
+        </div>
+    </div><br/><br/>
+
+    <div class="form-group">
+        <label for="firstname" class="col-sm-1 control-label">名字</label>
+        <div class="col-sm-6">
+            <input type="text" name="studentName"
+                   readonly th:value="${student.studentName}" class="form-control" id="firstname">
+        </div>
+    </div><br/><br/>
+
+    <div class="col-sm-8 col-sm-offset-1">
+
+        <strong>性别 </strong><br/>
+
+        <select name="sex">
+            <option th:value="男" ${student.sex eq 男 ? selected : }>男</option>
+            <option th:value="男" ${student.sex eq 女 ? selected : }>女</option>
+        </select><br/><br/>
+        <label for="firstname" class="col-sm-1 control-label">年龄</label>
+        <input type="text" name="age"   th:value=${student.age}><br/><br/>
+        <label for="firstname" class="col-sm-1 control-label">班级号</label>
+        <input type="text" name="studentClass"   th:value="${student.studentClass}"><br/><br/>
+        <div class="form-group">
+            <label for="firstname2" class="col-sm-1 control-label">专业名称</label>
+            <div class="col-sm-6">
+                <input type="text" name="studentMajor"  class="form-control" id="firstname2"
+                       placeholder="请输入专业">
+            </div>
+        </div><br/><br/>
+        <div class="form-group">
+            <label for="firstname2" class="col-sm-1 control-label">学院名称</label>
+            <div class="col-sm-6">
+                <input type="text" name="studentDepartment" class="form-control"
+                       placeholder="请输入学院名称">
+            </div>
+        </div><br/><br/>
+        <strong> 宿舍区域</strong><br/>
+        <textarea name="studentDormitory" rows="1" cols="30">
+            </textarea><br/><br/>
+
+            <input type="submit" value="提交" class="btn btn-default"/>
+    </div>
+
+</form>
+</body>
+</html>

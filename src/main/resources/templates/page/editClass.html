@@ -1,0 +1,33 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{../../lib/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{../../assets/metronic/css/style.css}"/>
+</head>
+<body>
+<form method="POST" action="/college/class/update"
+      enctype="multipart/form-data">
+
+
+    <div class="form-group">
+        <label for="firstname1" class="col-sm-1 control-label">班级ID</label>
+        <div class="col-sm-6">
+            <input type="text" name="classId" readonly th:value="${classId}" class="form-control" id="firstname1" >
+        </div>
+    </div><br/><br/>
+
+    <div class="form-group">
+        <label for="firstname" class="col-sm-1 control-label">新班级号</label>
+        <div class="col-sm-6">
+            <input type="text" name="newId" class="form-control" id="firstname">
+        </div>
+    </div><br/><br/>
+
+            <input type="submit" value="提交" class="btn btn-default"/>
+    </div>
+
+</form>
+</body>
+</html>
